@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('params', function (Blueprint $table) {
             $table->id();
+            $table->string('paramtype_id');
             $table->string('name');
+            $table->string('description');
+            $table->integer('param_state');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('params');
     }
 };

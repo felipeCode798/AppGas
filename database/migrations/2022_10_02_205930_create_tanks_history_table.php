@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('service_histories', function (Blueprint $table) {
+        Schema::create('tanks_history', function (Blueprint $table) {
             $table->id();
-            $table->string('id_services'); // Debe tener realcion con la tabla services
-            $table->string('total');
-            $table->string('mileage');
-            $table->string('date');
+            $table->string('station_id');
+            $table->string('user_id');
+            $table->string('vehicle_id');
+            $table->string('param_fuel');
+            $table->string('spent');
+            $table->string('km');
+            $table->string('param_state');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_histories');
+        Schema::dropIfExists('tanks_history');
     }
 };

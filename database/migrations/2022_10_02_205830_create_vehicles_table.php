@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user'); // Debe tener relacion con la tabla users
-            $table->string('type');
-            $table->integer('id_fuel'); // Debe tener relacion con la tabala fuels 
-            $table->integer('mileage');
-            $table->string('placa');
-            $table->integer('id_color'); // Debe tener relacion con la tabla colors
-            $table->integer('id_mark'); // Debe tener relacion con la tabla marks 
+            $table->string('user_id');
+            $table->integer('param_type');
+            $table->integer('param_fuel');
+            $table->integer('km');
+            $table->string('plate');
+            $table->integer('param_color');
+            $table->integer('param_mark');
+            $table->integer('param_state');
             $table->timestamps();
         });
     }

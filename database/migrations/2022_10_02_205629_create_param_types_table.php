@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fuels', function (Blueprint $table) {
+        Schema::create('param_types', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('description');
+            $table->integer('range_min');
+            $table->integer('range_max');
+            $table->integer('param_state');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fuels');
+        Schema::dropIfExists('param_types');
     }
 };
