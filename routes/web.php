@@ -1,6 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ColorController;
+use App\Http\Controllers\Fuelcontroller;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\MarkController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\StationController;
+use App\Http\Controllers\ServiceHistoryController;
+use App\Http\Controllers\VehicleController;
+use App\Models\ServiceHistory;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +23,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/service', function () {
-    return view('service.index');
-});
 
-Route::get('/station', function () {
-    return view('station.index');
-});
 
-Route::get('/station', function () {
-    return view('station.index');
-});
+Route::resource('services', ServiceHistory::class);
+
+

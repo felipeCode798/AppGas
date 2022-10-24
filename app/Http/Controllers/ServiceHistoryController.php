@@ -14,7 +14,7 @@ class ServiceHistoryController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,6 +25,8 @@ class ServiceHistoryController extends Controller
     public function create()
     {
         //
+        return view('service.create');
+
     }
 
     /**
