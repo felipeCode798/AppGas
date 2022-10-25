@@ -14,7 +14,7 @@ class Fuelcontroller extends Controller
      */
     public function index()
     {
-        //
+        return view('fuel.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class Fuelcontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('fuel.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class Fuelcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosFuel = request()->all();
+        return response()->json($datosFuel);
     }
 
     /**

@@ -14,7 +14,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        return view('vehicle.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehicle.create');
     }
 
     /**
@@ -35,7 +35,10 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$datosVehicle = request()->all();
+        $datosVehicle = request()->except('_token');
+        Vehicle::insert($datosVehicle);
+        return response()->json($datosVehicle);
     }
 
     /**

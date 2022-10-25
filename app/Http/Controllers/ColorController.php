@@ -14,7 +14,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        return view('color.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('color.create');
     }
 
     /**
@@ -35,7 +35,10 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$datosColor = request()->all();
+        $datosColor = request()->except('_token');
+        Color::insert($datosColor);
+        return response()->json($datosColor);
     }
 
     /**

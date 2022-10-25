@@ -14,7 +14,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('tank.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class HistoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('tank.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosTank = request()->all();
+        return response()->json($datosTank);
     }
 
     /**

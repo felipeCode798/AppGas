@@ -10,7 +10,6 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\ServiceHistoryController;
 use App\Http\Controllers\VehicleController;
-use App\Models\ServiceHistory;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +36,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::resource('services', ServiceHistory::class);
-
-
+Route::resource('servicesHistory', ServiceHistoryController::class);
+Route::resource('color', ColorController::class);
+Route::resource('fuel', Fuelcontroller::class);
+Route::resource('history', HistoryController::class);
+Route::resource('mark', MarkController::class);
+Route::resource('services', ServiceController::class);
+Route::resource('station', StationController::class);
+Route::resource('vehicle', VehicleController::class);

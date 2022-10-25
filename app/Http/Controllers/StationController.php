@@ -14,7 +14,7 @@ class StationController extends Controller
      */
     public function index()
     {
-        //
+        return view('station.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class StationController extends Controller
      */
     public function create()
     {
-        //
+        return view('station.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosStation = request()->all();
+        return response()->json($datosStation); 
     }
 
     /**

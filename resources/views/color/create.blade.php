@@ -7,7 +7,7 @@
         <h5 class="card-header">Default</h5>
         <div class="card-body">
           @csrf
-          <form action="{{ url('/service') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ url('/color') }}" method="POST" enctype="multipart/form-data">
             <div>
               <label for="defaultFormControlInput" class="form-label">Name</label>
               <input type="text" class="form-control" id="defaultFormControlInput" placeholder="John Doe" aria-describedby="defaultFormControlHelp" />
@@ -15,6 +15,7 @@
                 We'll never share your details with anyone else.
               </div>
             </div>
+            <button type="submit" class="btn btn-primary" value="guardar">Guardar</button>
           </form>
         </div>
       </div>

@@ -14,7 +14,7 @@ class MarkController extends Controller
      */
     public function index()
     {
-        //
+        return view('mark.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class MarkController extends Controller
      */
     public function create()
     {
-        //
+        return view('mark.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class MarkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosMark = request()->all();
+        return response()->json($datosMark);
     }
 
     /**

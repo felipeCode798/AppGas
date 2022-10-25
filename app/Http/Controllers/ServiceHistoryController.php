@@ -14,7 +14,7 @@ class ServiceHistoryController extends Controller
      */
     public function index()
     {
-        
+        return view('serviceHistory.index');
     }
 
     /**
@@ -24,8 +24,7 @@ class ServiceHistoryController extends Controller
      */
     public function create()
     {
-        //
-        return view('service.create');
+        return view('serviceHistory.create');
 
     }
 
@@ -37,7 +36,8 @@ class ServiceHistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosServicesHistory = request()->all();
+        return response()->json($datosServicesHistory);
     }
 
     /**
