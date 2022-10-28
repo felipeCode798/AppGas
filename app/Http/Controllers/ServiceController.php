@@ -13,8 +13,9 @@ class ServiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('service.index');
+    {   
+        $datos['services']=Service::paginate(5);
+        return view('service.index', $datos);
     }
 
     /**
@@ -35,7 +36,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $satosServices = request()->all();
+        $datosServices = request()->except('_token');
+        Service::insert($datosServices);
         return response()->json();
     }
 
@@ -58,7 +60,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('service.create');
     }
 
     /**
@@ -81,6 +83,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Service::destroy($id);
+        return redirect('service');
     }
 }

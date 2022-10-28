@@ -33,7 +33,7 @@ Route::middleware([
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::resource('servicesHistory', ServiceHistoryController::class);

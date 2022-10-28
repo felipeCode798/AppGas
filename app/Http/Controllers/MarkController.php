@@ -13,8 +13,9 @@ class MarkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('mark.index');
+    {   
+        $datos['marks']=Mark::paginate(5);
+        return view('mark.index', $datos);
     }
 
     /**
@@ -35,7 +36,8 @@ class MarkController extends Controller
      */
     public function store(Request $request)
     {
-        $datosMark = request()->all();
+        $datosMark = request()->except('_token');
+        Mark::insert($datosMark);
         return response()->json($datosMark);
     }
 
@@ -58,7 +60,7 @@ class MarkController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('mark.edit');
     }
 
     /**
@@ -81,6 +83,7 @@ class MarkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mark::destroy($id);
+        return redirect('mark');
     }
 }

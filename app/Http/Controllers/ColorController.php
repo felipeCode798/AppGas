@@ -13,8 +13,9 @@ class ColorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('color.index');
+    {   
+        $datos['colors']=Color::paginate(5);
+        return view('color.index', $datos);
     }
 
     /**
@@ -60,7 +61,7 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('color.edit');
     }
 
     /**
@@ -83,6 +84,7 @@ class ColorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Color::destroy($id);
+        return redirect('color');
     }
 }

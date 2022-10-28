@@ -13,8 +13,9 @@ class StationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('station.index');
+    {   
+        $datos['stations']=Station::paginate(5);
+        return view('station.index', $datos);
     }
 
     /**
@@ -35,7 +36,8 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        $datosStation = request()->all();
+        $datosStation = request()->except('_token');
+        Station::insert($datosStation);
         return response()->json($datosStation); 
     }
 
@@ -58,7 +60,7 @@ class StationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('station.create');
     }
 
     /**
@@ -81,6 +83,7 @@ class StationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Station::destroy($id);
+        return redirect('station');
     }
 }

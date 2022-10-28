@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Service_history;
+use App\Models\ServiceHistory;
 
 class ServiceHistoryController extends Controller
 {
@@ -13,8 +13,9 @@ class ServiceHistoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('serviceHistory.index');
+    {   
+        $datos['servicesHistories']=ServiceHistory::paginate(5);
+        return view('serviceHistory.index', $datos);
     }
 
     /**
@@ -36,7 +37,8 @@ class ServiceHistoryController extends Controller
      */
     public function store(Request $request)
     {
-        $datosServicesHistory = request()->all();
+        $datosServicesHistory = request()->except('_token');
+        ServiceHistory::insert();
         return response()->json($datosServicesHistory);
     }
 
@@ -59,7 +61,7 @@ class ServiceHistoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('serviceHistory.create');
     }
 
     /**
@@ -82,6 +84,7 @@ class ServiceHistoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ServiceHistory::destroy($id);
+        return redirect('serviceHistory');
     }
 }

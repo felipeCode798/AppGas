@@ -14,7 +14,8 @@ class Fuelcontroller extends Controller
      */
     public function index()
     {
-        return view('fuel.index');
+        $datos['fuels']=Fuel::paginate(5);
+        return view('fuel.index', $datos);
     }
 
     /**
@@ -35,7 +36,8 @@ class Fuelcontroller extends Controller
      */
     public function store(Request $request)
     {
-        $datosFuel = request()->all();
+        $datosFuel = request()->except('_token');
+        Fuel::insert($datosFuel);
         return response()->json($datosFuel);
     }
 
@@ -58,7 +60,7 @@ class Fuelcontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('fuel.edit');
     }
 
     /**
@@ -81,6 +83,7 @@ class Fuelcontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        Fuel::destroy($id);
+        return redirect('fuel');
     }
 }

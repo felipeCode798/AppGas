@@ -13,8 +13,9 @@ class VehicleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('vehicle.index');
+    {   
+        $datos['vehicles']=Vehicle::paginate(5);
+        return view('vehicle.index', $datos);
     }
 
     /**
@@ -60,7 +61,7 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('vehicle.create');
     }
 
     /**
@@ -83,6 +84,7 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Vehicle::destroy($id);
+        return redirect('vehicle');
     }
 }

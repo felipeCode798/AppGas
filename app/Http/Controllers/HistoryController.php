@@ -13,7 +13,8 @@ class HistoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $datos['tanks']=History::paginate(5);
         return view('tank.index');
     }
 
@@ -35,7 +36,8 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
-        $datosTank = request()->all();
+        $datosTank = request()->except('_token');
+        History::insert($datosTank);
         return response()->json($datosTank);
     }
 
@@ -58,7 +60,7 @@ class HistoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('tank.edit');
     }
 
     /**
@@ -81,6 +83,7 @@ class HistoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        History::destroy($id);
+        return redirect('tank');
     }
 }
